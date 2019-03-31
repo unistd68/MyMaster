@@ -64,7 +64,7 @@
     function loadData(success) {
         if (!searchData) {
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'https://blog.xtcgch.ink/content.json', true);
+            xhr.open('GET', 'https://unistd68.github.io/MyMaster/content.json', true);
             xhr.onload = function() {
                 if (this.status >= 200 && this.status < 300) {
                     var res = JSON.parse(this.response || this.responseText);

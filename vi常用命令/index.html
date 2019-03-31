@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://unistd68.yancoder.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="centos">
+
+
+    <meta name="description" content="摘要：本章主要介绍vi编译器常用的快捷命令
+
+
+移动
+向上移动一行：k
+向上移动9行：9k -&gt; n行：nk
+移动到当前行行尾:$
+移动到当前行的第一个字符上:0
+移动到下一行的行尾:1$...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>vi常用命令 | 我的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="unistd68">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://unistd68.yancoder.com">我的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="vi常用命令">
+            
+	            vi常用命令
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/其他/">其他</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/centos/">centos</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/09</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><strong>摘要：</strong>本章主要介绍vi编译器常用的快捷命令</p>
+<a id="more"></a>
+<hr>
+<h2 id="移动"><a href="#移动" class="headerlink" title="移动"></a><table><tr><td bgcolor="#C7C7C7">移动</td></tr></table></h2><ul>
+<li>向上移动一行：k</li>
+<li>向上移动9行：9k -&gt; n行：nk</li>
+<li>移动到当前行行尾:$</li>
+<li>移动到当前行的第一个字符上:0</li>
+<li>移动到下一行的行尾:1$</li>
+<li>移动到下n行的行尾:n$</li>
+<li>在当前行上查找下一个字符x（向右方向）:fx</li>
+<li>跳转到与当前光标下的括号相匹配的那一个括号:% ;( -&gt; ),) -&gt; (</li>
+<li>显示行号：set number</li>
+<li>关闭行号：set nonumber</li>
+<li>显示光标位置：set ruler</li>
+</ul>
+<h2 id="选择文本"><a href="#选择文本" class="headerlink" title="选择文本"></a><table><tr><td bgcolor="#C7C7C7">选择文本</td></tr></table></h2><ul>
+<li>v    从光标当前位置开始，光标所经过的地方会被选中，再按一下v结束</li>
+<li>V    从光标当前行开始，光标经过的行都会被选中，再按一下Ｖ结束</li>
+<li>Ctrl + v   从光标当前位置开始，选中光标起点和终点所构成的矩形区域，再按一下Ｃtrl + v结束</li>
+<li>ggVG 选中全部的文本， 其中gg为跳到行首，V选中整行，G末尾</li>
+</ul>
+<h2 id="删除文本"><a href="#删除文本" class="headerlink" title="删除文本"></a><table><tr><td bgcolor="#C7C7C7">删除文本</td></tr></table></h2><ul>
+<li>删除字符:x</li>
+<li>删除3个字符：3x -&gt; n个字符：nx</li>
+<li>删除一行:dd</li>
+<li>删除换行符:j</li>
+<li>撤销：u</li>
+<li>x 删除当前光标下的字符(“dl”的快捷命令)</li>
+<li>X 删除当前光标之前的字符(“dh”的快捷命令)</li>
+<li>D 删除自当前光标至行尾的内容(“d$”的快捷命令)</li>
+<li>dw 删除自当前光标至下一个word的开头</li>
+<li>db 删除自当前光标至前一个word的开始</li>
+<li>diw 删除当前光标所在的word(不包括空白字符)</li>
+<li>daw 删除当前光标所在的word(包括空白字符)</li>
+<li>dG 删除当前行至文件尾的内容</li>
+<li>dgg 删除当前行至文件头的内容</li>
+</ul>
+<h2 id="复制文本"><a href="#复制文本" class="headerlink" title="复制文本"></a><table><tr><td bgcolor="#C7C7C7">复制文本</td></tr></table></h2><ul>
+<li>复制一个字符：y</li>
+<li>复制一行：yy</li>
+<li>复制n个字符：yn</li>
+<li>复制一个单词：yw</li>
+</ul>
+<h2 id="粘贴文本"><a href="#粘贴文本" class="headerlink" title="粘贴文本"></a><table><tr><td bgcolor="#C7C7C7">粘贴文本</td></tr></table></h2><ul>
+<li>p:粘贴所有的复制和剪切内容</li>
+</ul>
+<h2 id="编辑文本"><a href="#编辑文本" class="headerlink" title="编辑文本"></a><table><tr><td bgcolor="#C7C7C7">编辑文本</td></tr></table></h2><ul>
+<li>全文查找：/target,下一个：n,上一个：N -&gt; 下3个：3n,上3个：3N</li>
+<li>在文本中查找下一个word:*,#</li>
+<li>查匹配单词的开头：\&lt; , 查匹配单词的结尾：> ,如 /the>不会匹配they</li>
+<li></li>
+</ul>
+<h2 id="编辑文本-1"><a href="#编辑文本-1" class="headerlink" title="编辑文本"></a><table><tr><td bgcolor="#C7C7C7">编辑文本</td></tr></table></h2><ul>
+<li>当前光标之前插入文本：i</li>
+<li>当前光标之后插入文本：a</li>
+<li>在当前行的下面另起一行插入文本：o</li>
+<li>在当前行的上面另起一行插入文本：O</li>
+<li>丢弃所有的修改并退出:”:q!”</li>
+<li>放弃所有修改并重新载入该文件的原始内容:”:e!”</li>
+<li>放弃所有操作并退出：qall</li>
+<li>保存所有:wall</li>
+<li>保存所有并退出:qwall</li>
+<li>使用vimdiff查看不同:vimdiff main.c~ main.c</li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/Ngix中FastCGI的解读/" class="pre-post btn btn-default" title="Ngix中FastCGI的解读">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Ngix中FastCGI的解读</span>
+        </a>
+    
+    
+        <a href="/一些有用的收藏/" class="next-post btn btn-default" title="一些有用的收藏">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">一些有用的收藏</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#移动"><span class="toc-text">移动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择文本"><span class="toc-text">选择文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除文本"><span class="toc-text">删除文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复制文本"><span class="toc-text">复制文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#粘贴文本"><span class="toc-text">粘贴文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编辑文本"><span class="toc-text">编辑文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编辑文本-1"><span class="toc-text">编辑文本</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

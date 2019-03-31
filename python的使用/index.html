@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://unistd68.yancoder.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="python,脚本">
+
+
+    <meta name="description" content="摘要：非正规的python心得。
+
+
+python文件的定义1#!/usr/bin/python
+行和缩进
+Python 的代码块不使用大括号 {} 来控制类，函数以及其他逻辑判断
+
+pytho...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>python的使用 | 我的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="unistd68">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://unistd68.yancoder.com">我的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="python的使用">
+            
+	            python的使用
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/原理/">原理</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/python/">python</a> <a class="tag-link" href="/tags/脚本/">脚本</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/19</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><strong>摘要：</strong>非正规的python心得。</p>
+<a id="more"></a>
+<hr>
+<h2 id="python文件的定义"><a href="#python文件的定义" class="headerlink" title="python文件的定义"></a><table><tr><td bgcolor="#C7C7C7">python文件的定义</td></tr></table></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br></pre></td></tr></table></figure>
+<h2 id="行和缩进"><a href="#行和缩进" class="headerlink" title="行和缩进"></a><table><tr><td bgcolor="#C7C7C7">行和缩进</td></tr></table></h2><ol>
+<li><p>Python 的代码块不使用大括号 {} 来控制类，函数以及其他逻辑判断</p>
+</li>
+<li><p>python 最具特色的就是用缩进来写模块</p>
+</li>
+<li><p>缩进的空白数量是可变的，但是所有代码块语句必须包含相同的缩进空白数量，这个必须严格执行</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if True:</span><br><span class="line">    print &quot;True&quot;</span><br><span class="line">else:</span><br><span class="line">  print &quot;False&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="Python-标识符"><a href="#Python-标识符" class="headerlink" title="Python 标识符"></a><table><tr><td bgcolor="#C7C7C7">Python 标识符</td></tr></table></h2><ol>
+<li><p>Python 中的标识符是区分大小写的</p>
+</li>
+<li><p>以下划线开头的标识符是有特殊意义的</p>
+<ul>
+<li>以单下划线开头 _foo 的代表不能直接访问的类属性,需通过类提供的接口进行访问</li>
+<li>以双下划线开头的 __foo 代表类的私有成员</li>
+<li>以双下划线开头和结尾的 <strong>foo</strong> 代表 Python 里特殊方法专用的标识</li>
+<li>Python 可以同一行显示多条语句，方法是用分号 ; 分开<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print &apos;hello&apos;;print &apos;runoob&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="多行语句"><a href="#多行语句" class="headerlink" title="多行语句"></a><table><tr><td bgcolor="#C7C7C7">多行语句</td></tr></table></h2><ol>
+<li><p>Python语句中一般以新行作为语句的结束符</p>
+</li>
+<li><p>可以使用斜杠（ \）将一行的语句分为多行显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">total = item_one + \</span><br><span class="line">        item_two + \</span><br><span class="line">        item_three</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>语句中包含 [], {} 或 () 括号就不需要使用多行连接符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">days = [&apos;Monday&apos;, &apos;Tuesday&apos;, &apos;Wednesday&apos;,</span><br><span class="line">        &apos;Thursday&apos;, &apos;Friday&apos;]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Python-引号"><a href="#Python-引号" class="headerlink" title="Python 引号"></a><table><tr><td bgcolor="#C7C7C7">Python 引号</td></tr></table></h2><ol>
+<li><p>Python 可以使用引号( ‘ )、双引号( “ )、三引号( ‘’’ 或 “”” ) 来表示字符串</p>
+</li>
+<li><p>三引号(“””)可以由多行组成，编写多行文本的快捷语法，常用于文档字符串，在文件的特定地点，被当做注释</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">word = &apos;word&apos;</span><br><span class="line">sentence = &quot;这是一个句子。&quot;</span><br><span class="line">paragraph = &quot;&quot;&quot;这是一个段落。</span><br><span class="line">包含了多个语句&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="Python注释"><a href="#Python注释" class="headerlink" title="Python注释"></a><table><tr><td bgcolor="#C7C7C7">Python注释</td></tr></table></h2><ol>
+<li>单行注释：#</li>
+</ol>
+<p><strong>注意：</strong>第一行的<code>#! /bin/bash</code>不是表示注释，而是指明了执行该脚本的bash解释器的位置</p>
+<ol>
+<li>python 中多行注释使用三个单引号(‘’’)或三个双引号(“””)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&apos;&apos;&apos;</span><br><span class="line">这是多行注释，使用单引号。</span><br><span class="line">这是多行注释，使用单引号。</span><br><span class="line">这是多行注释，使用单引号。</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">这是多行注释，使用双引号。</span><br><span class="line">这是多行注释，使用双引号。</span><br><span class="line">这是多行注释，使用双引号。</span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="空行"><a href="#空行" class="headerlink" title="空行"></a><table><tr><td bgcolor="#C7C7C7">空行</td></tr></table></h2><ol>
+<li><p>函数之间或类的方法之间用空行分隔，表示一段新的代码的开始</p>
+</li>
+<li><p>空行的作用在于分隔两段不同功能或含义的代码，便于日后代码的维护或重构</p>
+</li>
+<li><p>空行也是程序代码的一部分</p>
+</li>
+</ol>
+<h2 id="同一行显示多条语句"><a href="#同一行显示多条语句" class="headerlink" title="同一行显示多条语句"></a><table><tr><td bgcolor="#C7C7C7">同一行显示多条语句</td></tr></table></h2><p>Python可以在同一行中使用多条语句，语句之间使用分号(;)分割</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"></span><br><span class="line">import sys; x = &apos;runoob&apos;; sys.stdout.write(x + &apos;\n&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="Print-输出"><a href="#Print-输出" class="headerlink" title="Print 输出"></a><table><tr><td bgcolor="#C7C7C7">Print 输出</td></tr></table></h2><p>print 默认输出是换行的，如果要实现不换行需要在变量末尾加上逗号 ,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line"></span><br><span class="line">x=&quot;a&quot;</span><br><span class="line">y=&quot;b&quot;</span><br><span class="line"># 换行输出</span><br><span class="line">print x</span><br><span class="line">print y</span><br><span class="line"></span><br><span class="line">print &apos;---------&apos;</span><br><span class="line"># 不换行输出</span><br><span class="line">print x,</span><br><span class="line">print y,</span><br><span class="line"></span><br><span class="line"># 不换行输出</span><br><span class="line">print x,y</span><br></pre></td></tr></table></figure>
+<h2 id="if-else语句"><a href="#if-else语句" class="headerlink" title="if else语句"></a><table><tr><td bgcolor="#C7C7C7">if else语句</td></tr></table></h2><h2 id="while语句"><a href="#while语句" class="headerlink" title="while语句"></a><table><tr><td bgcolor="#C7C7C7">while语句</td></tr></table></h2><h2 id="常用运算"><a href="#常用运算" class="headerlink" title="常用运算"></a><table><tr><td bgcolor="#C7C7C7">常用运算</td></tr></table></h2><h3 id="布尔运算"><a href="#布尔运算" class="headerlink" title="布尔运算"></a><font color="#0000FF">布尔运算</font></h3><h3 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a><font color="#0000FF">字符串运算</font></h3><h3 id="关系运算"><a href="#关系运算" class="headerlink" title="关系运算"></a><font color="#0000FF">关系运算</font></h3><h3 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a><font color="#0000FF">算术运算</font></h3><h2 id="mysql数据库操作"><a href="#mysql数据库操作" class="headerlink" title="mysql数据库操作"></a><table><tr><td bgcolor="#C7C7C7">mysql数据库操作</td></tr></table></h2><h2 id="文件io"><a href="#文件io" class="headerlink" title="文件io"></a><table><tr><td bgcolor="#C7C7C7">文件io</td></tr></table></h2><h2 id="获取命令行参数"><a href="#获取命令行参数" class="headerlink" title="获取命令行参数"></a><table><tr><td bgcolor="#C7C7C7">获取命令行参数</td></tr></table></h2><h3 id="获取参数个数"><a href="#获取参数个数" class="headerlink" title="获取参数个数"></a><font color="#0000FF">获取参数个数</font></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">count = sys.argc</span><br></pre></td></tr></table></figure>
+<h3 id="获取某个参数"><a href="#获取某个参数" class="headerlink" title="获取某个参数"></a><font color="#0000FF">获取某个参数</font></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">param = sys.argv[1]</span><br></pre></td></tr></table></figure>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/Linux下的一些小知识/" class="pre-post btn btn-default" title="Linux下的一些小知识">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Linux下的一些小知识</span>
+        </a>
+    
+    
+        <a href="/Ngix中FastCGI的解读/" class="next-post btn btn-default" title="Ngix中FastCGI的解读">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Ngix中FastCGI的解读</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python文件的定义"><span class="toc-text">python文件的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#行和缩进"><span class="toc-text">行和缩进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-标识符"><span class="toc-text">Python 标识符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多行语句"><span class="toc-text">多行语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-引号"><span class="toc-text">Python 引号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python注释"><span class="toc-text">Python注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空行"><span class="toc-text">空行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#同一行显示多条语句"><span class="toc-text">同一行显示多条语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Print-输出"><span class="toc-text">Print 输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if-else语句"><span class="toc-text">if else语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#while语句"><span class="toc-text">while语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用运算"><span class="toc-text">常用运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#布尔运算"><span class="toc-text">布尔运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串运算"><span class="toc-text">字符串运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关系运算"><span class="toc-text">关系运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算术运算"><span class="toc-text">算术运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql数据库操作"><span class="toc-text">mysql数据库操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件io"><span class="toc-text">文件io</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取命令行参数"><span class="toc-text">获取命令行参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取参数个数"><span class="toc-text">获取参数个数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取某个参数"><span class="toc-text">获取某个参数</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

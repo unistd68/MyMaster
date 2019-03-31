@@ -1,0 +1,405 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://unistd68.yancoder.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="makefile,编译">
+
+
+    <meta name="description" content="摘要：在unix/linux服务器下编译工程时，特别是大型工程，使用makefile语法是一个非常好的选择。
+
+
+编译原则
+如果这个工程没有编译过，那么我们的所有C文件都要编译并被链接。
+如果这...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>【原理】makefile语法 | 我的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="unistd68">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://unistd68.yancoder.com">我的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="【原理】makefile语法">
+            
+	            【原理】makefile语法
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/原理/">原理</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/makefile/">makefile</a> <a class="tag-link" href="/tags/编译/">编译</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/11/23</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><strong>摘要</strong>：在unix/linux服务器下编译工程时，特别是大型工程，使用makefile语法是一个非常好的选择。</p>
+<a id="more"></a>
+<hr>
+<h2 id="编译原则"><a href="#编译原则" class="headerlink" title="编译原则"></a>编译原则</h2><ul>
+<li>如果这个工程没有编译过，那么我们的所有C文件都要编译并被链接。</li>
+<li>如果这个工程的某几个C文件被修改，那么我们只编译被修改的C文件，并链接目标程序。</li>
+<li>如果这个工程的头文件被改变了，那么我们需要编译引用了这几个头文件的C文件，并链接目标程序。</li>
+</ul>
+<hr>
+<h2 id="语法规则"><a href="#语法规则" class="headerlink" title="语法规则"></a>语法规则</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">target... : prerequisites ...</span><br><span class="line">          command</span><br><span class="line">          ...</span><br></pre></td></tr></table></figure>
+<p><strong>target</strong>也就是一个目标文件，可以是Object File，也可以是执行文件。还可以是一个标签（Label），对于标签这种特性，在后续的“伪目标”章节中会有叙述。</p>
+<p><strong>prerequisites</strong>就是，要生成那个target所需要的文件或是目标。</p>
+<p><strong>command</strong>也就是make需要执行的命令。（任意的Shell命令）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo.o: foo.c defs.h       # foo模块</span><br><span class="line">       cc -c -g foo.c</span><br></pre></td></tr></table></figure>
+<p>注解：<br>（1）<code>foo.o</code>是<code>target</code>，目标文件；<br>（2）<code>foo.c defs.h</code>是<code>prerequisites</code>，依赖文件；<br>（3）<code>cc -c -g foo.c</code>就是<code>command</code>，即make需要执行的命令。</p>
+<hr>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>1、示例一</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">test:main.o base.o</span><br><span class="line">    g++ -o test main.o base.o</span><br><span class="line">main.o:main.cpp base.hpp</span><br><span class="line">	gcc -c main.cpp</span><br><span class="line">base.o:base.cpp base.hpp</span><br><span class="line">	gcc -c base.cpp</span><br><span class="line">.PHONY:clean</span><br><span class="line">clean:</span><br><span class="line">	rm test main.o base.o</span><br></pre></td></tr></table></figure>
+<p>解释：</p>
+<p>（1）test为生成的可执行文件的名称，即make makefile后生成的test可执行文件<br>（2）如果语言是C++，则要使用g++来进行编译和链接<br>（3）命令行只能使用tab来缩进，不能使用空格等</p>
+<p>2、示例二</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">obj=main.o base.o</span><br><span class="line">test:$(obj)</span><br><span class="line">    g++ -o test $(obj)</span><br><span class="line">main.o:base.hpp</span><br><span class="line">base.o:base.hpp</span><br><span class="line">.PHONY:clean</span><br><span class="line">clean:</span><br><span class="line">	rm test $(obj)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Makefile-总述"><a href="#Makefile-总述" class="headerlink" title="Makefile 总述"></a>Makefile 总述</h2><p>1、Makefile里有什么？</p>
+<p>Makefile里主要包含了五个东西：<strong>显式规则</strong>、<strong>隐晦规则</strong>、<strong>变量定义</strong>、<strong>文件指示</strong>和<strong>注释</strong>。</p>
+<p>（1）显式规则。显式规则说明了，如何生成一个或多的的目标文件。这是由Makefile的书写者明显指出，要生成的文件，文件的依赖文件，生成的命令。</p>
+<p>（2）隐晦规则。由于我们的make有自动推导的功能，所以隐晦的规则可以让我们比较粗糙地简略地书写Makefile，这是由make所支持的。</p>
+<p>（3）变量的定义。在Makefile中我们要定义一系列的变量，变量一般都是字符串，这个有点你C语言中的宏，当Makefile被执行时，其中的变量都会被扩展到相应的引用位置上。</p>
+<p>（4）文件指示。其包括了三个部分，<br>一个是在一个Makefile中引用另一个Makefile，就像C语言中的include一样；<br>另一个是指根据某些情况指定Makefile中的有效部分，就像C语言中的预编译#if一样；还有就是定义一个多行的命令。有关这一部分的内容，我会在后续的部分中讲述。</p>
+<p>（5）注释。Makefile中只有<strong>行注释</strong>，和UNIX的Shell脚本一样，其注释是用“#”字符，这个就像C/C++中的“//”一样。如果你要在你的Makefile中使用“#”字符，可以用反斜框进行转义，如：“#”。</p>
+<p>2、Makefile的文件名</p>
+<p>（1）默认情况：“GNUmakefile”、“makefile”、“Makefile”</p>
+<p>（2）自定义：“Make.Linux”，“Make.Solaris”，“Make.AIX”</p>
+<p>3、Make</p>
+<p>（1）默认文件：“GNUmakefile”、“makefile”、“Makefile”</p>
+<p>（2）指定要make的文件：<code>make -f filename</code>或<code>make -file filename</code>,如：<code>make -f Make.Linux</code>或<code>make --file Make.AIX</code>。</p>
+<hr>
+<h2 id="环境变量-MAKEFILES"><a href="#环境变量-MAKEFILES" class="headerlink" title="环境变量 MAKEFILES"></a>环境变量 MAKEFILES</h2><hr>
+<h2 id="Makefile书写规则"><a href="#Makefile书写规则" class="headerlink" title="Makefile书写规则"></a>Makefile书写规则</h2><p>规则包含两个部分，一个是<strong>依赖关系</strong>，一个是<strong>生成目标的方法</strong>。</p>
+<p>1、在规则中使用通配符</p>
+<p>make支持三各通配符：<code>*，?，[...]</code>。</p>
+<p>（1）~<br>波浪号<code>~</code>字符在文件名中也有比较特殊的用途。如果是<code>~/test</code>，这就表示当前用户的$HOME目录下的test目录。而<code>~hchen/test</code>则表示用户hchen的宿主目录下的test目录。（这些都是Unix下的小知识了，make也支持）而在Windows或是MS-DOS下，用户没有宿主目录，那么波浪号所指的目录则根据环境变量“<code>HOME</code>”而定。</p>
+<p>（2）<em><br>通配符代替了你一系列的文件，如`</em>.c<code>表示所以后缀为c的文件。一个需要我们注意的是，如果我们的文件名中有通配符，如：</code><em><code>，那么可以用转义字符</code>`，如`\</em><code>来表示真实的</code>*`字符，而不是任意长度的字符串。<br>好吧，还是先来看几个例子吧：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clean:</span><br><span class="line">        rm -f *.o</span><br></pre></td></tr></table></figure>
+<p>上面这个例子我不不多说了，这是操作系统Shell所支持的通配符。这是在命令中的通配符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print: *.c</span><br><span class="line">     lpr -p $?</span><br><span class="line">     touch print</span><br></pre></td></tr></table></figure>
+<p>上面这个例子说明了通配符也可以在我们的规则中，目标print依赖于所有的<code>[.c]</code>文件。其中的“<code>$?</code>”是一个自动化变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objects = *.o</span><br></pre></td></tr></table></figure>
+<p>上面这个例子，表示了，通符同样可以用在变量中。并不是说<code>[*.o]</code>会展开，不！<code>objects</code>的值就是<code>*.o</code>。Makefile中的变量其实就是C/C++中的宏。如果你要让通配符在变量中展开，也就是让<code>objects</code>的值是所有<code>[.o]</code>的文件名的集合，那么，你可以这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objects := $(wildcard *.o)</span><br></pre></td></tr></table></figure>
+<p>2、文件搜寻</p>
+<p>3、伪目标</p>
+<p>4、多目标</p>
+<p>5、静态模式</p>
+<p>6、自动生成依赖性</p>
+<hr>
+<h2 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h2><p>1、变量的基础</p>
+<p>（1）变量定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj=main.o,base.o</span><br></pre></td></tr></table></figure>
+<p>（2）变量的引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(obj)</span><br></pre></td></tr></table></figure>
+<p>2、变量的变量</p>
+<p>3、变量值的替换</p>
+<p>4、把变量的值再当成变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = y</span><br><span class="line">y = z</span><br><span class="line">a := $($(x))</span><br></pre></td></tr></table></figure>
+<p>5、追加变量值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">objects = main.o foo.o bar.o utils.o</span><br><span class="line">objects += another.o</span><br></pre></td></tr></table></figure>
+<p>6、override 指示符</p>
+<p>7、多行变量</p>
+<p>8、环境变量</p>
+<p>9、目标变量</p>
+<p>10、模式变量</p>
+<hr>
+<h2 id="使用函数"><a href="#使用函数" class="headerlink" title="使用函数"></a>使用函数</h2><p>1、函数调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">（1）$(&lt;function&gt; &lt;arguments&gt; )</span><br><span class="line"></span><br><span class="line">（2）$&#123;&lt;function&gt; &lt;arguments&gt;&#125;</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“$(subst a,b,$(x))”</span><br></pre></td></tr></table></figure>
+<p>其中，<code>subst</code>就是函数名，<code>a,b,S(x)</code>就是参数</p>
+<p>2、字符串函数</p>
+<p>（1）字符替换函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(subst &lt;from&gt;,&lt;to&gt;,&lt;text&gt; )</span><br></pre></td></tr></table></figure></p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(subst ee,EE,feet on the street)</span><br></pre></td></tr></table></figure>
+<p>作用：把<code>feet on the street</code>中的<code>ee</code>替换成<code>EE</code><br>结果：返回<code>fEEt on the strEEt</code>。</p>
+<p>（2）</p>
+<p>3、文件名操作函数</p>
+<p>4、foreach 函数</p>
+<p>5、if 函数</p>
+<p>6、call函数</p>
+<p>7、origin函数</p>
+<p>8、shell函数</p>
+<p>9、控制make的函数</p>
+<hr>
+<h2 id="make的运行"><a href="#make的运行" class="headerlink" title="make的运行"></a>make的运行</h2><p>1、make的退出码</p>
+<p>0 ：表示成功执行。<br>1 ：如果make运行时出现任何错误，其返回1。<br>2 ：如果你使用了make的“-q”选项，并且make使得一些目标不需要更新，那么返回2。</p>
+<p>2、指定Makefile</p>
+<p>3、指定目标</p>
+<p>4、检查规则</p>
+<p>5、make的参数</p>
+<hr>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p>–&gt; <a href="http://blog.csdn.net/ruglcc/article/details/7814546/" target="_blank" rel="noopener">文章1</a></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/pipel-communication/" class="pre-post btn btn-default" title="【原理】管道通信">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">【原理】管道通信</span>
+        </a>
+    
+    
+        <a href="/sort-alogrithm/" class="next-post btn btn-default" title="【原理】常见排序算法">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">【原理】常见排序算法</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#编译原则"><span class="toc-text">编译原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#语法规则"><span class="toc-text">语法规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Makefile-总述"><span class="toc-text">Makefile 总述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境变量-MAKEFILES"><span class="toc-text">环境变量 MAKEFILES</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Makefile书写规则"><span class="toc-text">Makefile书写规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用变量"><span class="toc-text">使用变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用函数"><span class="toc-text">使用函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#make的运行"><span class="toc-text">make的运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-text">参考文章</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

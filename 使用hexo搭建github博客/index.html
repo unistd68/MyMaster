@@ -202,10 +202,10 @@
 <p>4、进行一些个性化的改造</p>
 <p>就像对待自己女朋友一样，要把她变成私有的，烙上自己独特的印记，最常用的有配置域名啦，对主题进行配置啦，模板配置啦，一键部署啦，等等</p>
 <hr>
-<h2 id="各个步骤说明"><a href="#各个步骤说明" class="headerlink" title="各个步骤说明"></a><table><tr><td bgcolor="#C7C7C7">各个步骤说明</td></tr></table></h2><h3 id="创建github仓库"><a href="#创建github仓库" class="headerlink" title="创建github仓库"></a><table><tr><td bgcolor="#C7C7C7">创建github仓库</td></tr></table></h3><p>1、创建一个public的repos</p>
+<h2 id="各个步骤说明"><a href="#各个步骤说明" class="headerlink" title="各个步骤说明"></a><table><tr><td bgcolor="#C7C7C7">各个步骤说明</td></tr></table></h2><h3 id="创建github仓库"><a href="#创建github仓库" class="headerlink" title="创建github仓库"></a><font color="#0000FF">创建github仓库</font></h3><p>1、创建一个public的repos</p>
 <p>2、设置启用https</p>
 <hr>
-<h3 id="部署本地环境"><a href="#部署本地环境" class="headerlink" title="部署本地环境"></a><table><tr><td bgcolor="#C7C7C7">部署本地环境</td></tr></table></h3><p>1、安装git</p>
+<h3 id="部署本地环境"><a href="#部署本地环境" class="headerlink" title="部署本地环境"></a><font color="#0000FF">部署本地环境</font></h3><p>1、安装git</p>
 <p>git可以把本地的博客文件commit到远程仓库，即对博客进行更新</p>
 <p>2、创建ssh的rsa公钥和密钥，配置连接远程仓库的参数</p>
 <p>本地git和远程仓库进行连接时，首先需要进行安全验证，目前使用ssh的rsa key来保证，远程仓库使用public key，本地使用private key</p>
@@ -217,7 +217,7 @@
 <p>nodejs是管理hexo博客的主要工具，主要用到nodejs里面的npm，nodejs支持把markdown文件转为静态网页</p>
 <p>同时npm也可以安装一些主题需要的模块</p>
 <hr>
-<h3 id="配置博客主题"><a href="#配置博客主题" class="headerlink" title="配置博客主题"></a><table><tr><td bgcolor="#C7C7C7">配置博客主题</td></tr></table></h3><p>hexo的默认主题是landscape，我用的是snippet</p>
+<h3 id="配置博客主题"><a href="#配置博客主题" class="headerlink" title="配置博客主题"></a><font color="#0000FF">配置博客主题</font></h3><p>hexo的默认主题是landscape，我用的是snippet</p>
 <p>在根目录的_config.yml文件里面可以指定要使用的主题，然后在generate阶段会去themes目录下寻找对应的主题</p>
 <p>配置博客主题主要有2方面：</p>
 <ul>
@@ -231,10 +231,10 @@
 <li>修改url地址，这点无疑是最坑的，无论修改成github仓库地址还是域名</li>
 </ul>
 <hr>
-<h3 id="配置域名"><a href="#配置域名" class="headerlink" title="配置域名"></a><table><tr><td bgcolor="#C7C7C7">配置域名</td></tr></table></h3><p>1、阿里云/腾讯/万网进行解析，添加CNAME记录即可</p>
+<h3 id="配置域名"><a href="#配置域名" class="headerlink" title="配置域名"></a><font color="#0000FF">配置域名</font></h3><p>1、阿里云/腾讯/万网进行解析，添加CNAME记录即可</p>
 <p>2、github仓库设置好域名，添加CNAME文件</p>
 <hr>
-<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a><table><tr><td bgcolor="#C7C7C7">常见问题</td></tr></table></h3><p>1、hexo d 时出现错误 Error: ERROR: Permission to</p>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a><font color="#0000FF">常见问题</font></h3><p>1、hexo d 时出现错误 Error: ERROR: Permission to</p>
 <p>原因：登录账号和push到仓库的账号不一致，要么配置错误，要么是存在多账号的问题</p>
 <p>解决方法：使用配置文件的方式来进行登录和push</p>
 <p>2、hexo d后 ERROR Deployer not found: git</p>

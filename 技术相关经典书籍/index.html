@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>【原理】数据库知识 | 我的博客 - blog</title>
+<title>技术相关经典书籍 | 我的博客 - blog</title>
 
 
     <link rel="alternate" href="/atom.xml" title="我的博客 - blog" type="application/atom+xml">
@@ -136,9 +136,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="【原理】数据库知识">
+        <h1 id="技术相关经典书籍">
             
-	            【原理】数据库知识
+	            技术相关经典书籍
             
         </h1>
         <div class="post-meta">
@@ -146,8 +146,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="https://blog.xtcgch.ink/categories/原理">
-            原理
+        <a href="https://blog.xtcgch.ink/categories/其他">
+            其他
         </a>
     </span>
     
@@ -158,10 +158,6 @@
         <span class="tags-meta">
             
                 
-                    <a href="https://blog.xtcgch.ink/tags/数据库" title="数据库">
-                        数据库
-                    </a>
-                
             
         </span>
     </span>
@@ -171,7 +167,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/11/23</span>
+            <span class="date-meta">2019/04/07</span>
         </span>
         
     
@@ -182,23 +178,66 @@
     </div>
     
     <div class="post-body post-content">
-        <p><strong>摘要</strong>：本文主要讲数据库相关的知识点。</p>
+        <p><strong>摘要：</strong>本页主要列举了技术类相关的经典书籍，闲暇时间可以多看看！</p>
 <a id="more"></a>
 <hr>
-<h2 id="1、索引与散列"><a href="#1、索引与散列" class="headerlink" title="1、索引与散列"></a>1、索引与散列</h2><h3 id="1-1-索引"><a href="#1-1-索引" class="headerlink" title="1.1 索引"></a>1.1 索引</h3><h4 id="1-1-1-基本术语"><a href="#1-1-1-基本术语" class="headerlink" title="1.1.1 基本术语"></a>1.1.1 基本术语</h4><p>搜索码：指数据表的字段，如name</p>
-<p>搜索码值：指该字段下的值，如zhangsan</p>
-<h4 id="1-1-2-稠密索引"><a href="#1-1-2-稠密索引" class="headerlink" title="1.1.2 稠密索引"></a>1.1.2 稠密索引</h4><p>稠密索引是索引记录和数据表记录一一对应的，即每条索引对应一条记录。</p>
-<h4 id="1-1-3-稀疏索引"><a href="#1-1-3-稀疏索引" class="headerlink" title="1.1.3 稀疏索引"></a>1.1.3 稀疏索引</h4><p>稀疏索引是只为某些记录建立索引记录。</p>
-<h4 id="1-1-4-聚集索引"><a href="#1-1-4-聚集索引" class="headerlink" title="1.1.4 聚集索引"></a>1.1.4 聚集索引</h4><p>聚集索引是指索引的排列顺序和记录的排列顺序是一致的。</p>
-<h4 id="1-1-5-非聚集索引"><a href="#1-1-5-非聚集索引" class="headerlink" title="1.1.5 非聚集索引"></a>1.1.5 非聚集索引</h4><p>非聚集索引则没有这个要求。</p>
-<h4 id="1-1-6-稠密，稀疏索引和聚集，非聚集索引的区别"><a href="#1-1-6-稠密，稀疏索引和聚集，非聚集索引的区别" class="headerlink" title="1.1.6 稠密，稀疏索引和聚集，非聚集索引的区别"></a>1.1.6 稠密，稀疏索引和聚集，非聚集索引的区别</h4><p>稠密，稀疏索引是以是否与表记录一一对应来划分；而聚集索引和非聚集索引是以索引的排列顺序与表记录的排列顺序是否相同来划分。</p>
-<h4 id="1-1-7-使用心得"><a href="#1-1-7-使用心得" class="headerlink" title="1.1.7 使用心得"></a>1.1.7 使用心得</h4><p>1.外层索引一定是稀疏索引。</p>
-<p>2.</p>
-<h4 id="1-1-8-B-树索引"><a href="#1-1-8-B-树索引" class="headerlink" title="1.1.8 B+树索引"></a>1.1.8 B+树索引</h4><h5 id="（1）叶节点"><a href="#（1）叶节点" class="headerlink" title="（1）叶节点"></a>（1）叶节点</h5><h5 id="（2）非叶结点"><a href="#（2）非叶结点" class="headerlink" title="（2）非叶结点"></a>（2）非叶结点</h5><h5 id="（3）一次查找的时间"><a href="#（3）一次查找的时间" class="headerlink" title="（3）一次查找的时间"></a>（3）一次查找的时间</h5><p>log[n/2]（k）:n指根节点到一个叶节点路径上的节点数，k指搜索码值</p>
-<h4 id="1-1-9-多码访问"><a href="#1-1-9-多码访问" class="headerlink" title="1.1.9 多码访问"></a>1.1.9 多码访问</h4><h5 id="（1）使用多个单码索引"><a href="#（1）使用多个单码索引" class="headerlink" title="（1）使用多个单码索引"></a>（1）使用多个单码索引</h5><p>使用多个单码索引即根据每个搜索码查找符合条件的记录，然后利用交集来获取最终的结果</p>
-<h5 id="（2）多码索引"><a href="#（2）多码索引" class="headerlink" title="（2）多码索引"></a>（2）多码索引</h5><p>索引码为复合搜索码，即由多个属性组合而成；</p>
-<p>搜索码值的顺序是词典顺序</p>
-<h3 id="1-2-散列"><a href="#1-2-散列" class="headerlink" title="1.2 散列"></a>1.2 散列</h3>
+<h2 id="编程语言类"><a href="#编程语言类" class="headerlink" title="编程语言类"></a><table><tr><td bgcolor="#C7C7C7">编程语言类</td></tr></table></h2><ol>
+<li><p><a href="https://blog.xtcgch.ink/go/">go</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/python/">python</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/shell/">shell</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/lua/">lua</a></p>
+</li>
+</ol>
+<h2 id="编程思维类"><a href="#编程思维类" class="headerlink" title="编程思维类"></a><table><tr><td bgcolor="#C7C7C7">编程思维类</td></tr></table></h2><ol>
+<li><p><a href="https://blog.xtcgch.ink/编程珠玑/">编程珠玑</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/计算机编程艺术/">计算机编程艺术(一、二、三卷)</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/EffectiveC++/">Effective C++</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/ThinkinginC++/">Thinking in C++</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/C++编程艺术/">C++编程艺术</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/C++编程思想/">C++编程思想(一、二卷)</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/C++编程规范/">C++编程规范</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/C++代码设计与重用/">C++代码设计与重用</a></p>
+</li>
+</ol>
+<h2 id="计算机网络类"><a href="#计算机网络类" class="headerlink" title="计算机网络类"></a><table><tr><td bgcolor="#C7C7C7">计算机网络类</td></tr></table></h2><ol>
+<li><p><a href="https://blog.xtcgch.ink/UNIX网络编程/">UNIX网络编程</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/C++网络编程/">C++网络编程</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/TCPIP/">TCP/IP</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/高级TCPIP编程/">高级TCP/IP编程</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/linux网络体系结构/">linux网络体系结构</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/TCP/IP高效编程/">TCP/IP高效编程</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/TCPIP协议原理与应用/">TCP/IP协议原理与应用</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/用TCP/IP进行网际互连/">用TCP/IP进行网际互连</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/IPv6详解/">IPv6详解</a></p>
+</li>
+</ol>
+<h2 id="操作系统类"><a href="#操作系统类" class="headerlink" title="操作系统类"></a><table><tr><td bgcolor="#C7C7C7">操作系统类</td></tr></table></h2><ol>
+<li><p><a href="https://blog.xtcgch.ink/UNIX环境高级编程/">UNIX环境高级编程</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/Linux内核设计与实现/">Linux内核设计与实现</a></p>
+</li>
+<li><p><a href="https://blog.xtcgch.ink/深入理解Linux内核/">深入理解Linux内核</a></p>
+</li>
+</ol>
+<h2 id="数据库类"><a href="#数据库类" class="headerlink" title="数据库类"></a><table><tr><td bgcolor="#C7C7C7">数据库类</td></tr></table></h2><h2 id="其他类"><a href="#其他类" class="headerlink" title="其他类"></a><table><tr><td bgcolor="#C7C7C7">其他类</td></tr></table></h2>
     </div>
     
     <div class="post-footer">
@@ -213,15 +252,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/tcp&udp/" class="pre-post btn btn-default" title="【原理】TCP和UDP协议的一些理解">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">【原理】TCP和UDP协议的一些理解</span>
-        </a>
     
-    
-        <a href="/pointer&ref/" class="next-post btn btn-default" title="【原理】指针和引用">
+        <a href="/leetcode的经典题目/" class="next-post btn btn-default" title="leetcode的经典题目">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">【原理】指针和引用</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">leetcode的经典题目</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -264,7 +298,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、索引与散列"><span class="toc-text">1、索引与散列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-索引"><span class="toc-text">1.1 索引</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-基本术语"><span class="toc-text">1.1.1 基本术语</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-稠密索引"><span class="toc-text">1.1.2 稠密索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-3-稀疏索引"><span class="toc-text">1.1.3 稀疏索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-4-聚集索引"><span class="toc-text">1.1.4 聚集索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-5-非聚集索引"><span class="toc-text">1.1.5 非聚集索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-6-稠密，稀疏索引和聚集，非聚集索引的区别"><span class="toc-text">1.1.6 稠密，稀疏索引和聚集，非聚集索引的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-7-使用心得"><span class="toc-text">1.1.7 使用心得</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-8-B-树索引"><span class="toc-text">1.1.8 B+树索引</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#（1）叶节点"><span class="toc-text">（1）叶节点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（2）非叶结点"><span class="toc-text">（2）非叶结点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（3）一次查找的时间"><span class="toc-text">（3）一次查找的时间</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-9-多码访问"><span class="toc-text">1.1.9 多码访问</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#（1）使用多个单码索引"><span class="toc-text">（1）使用多个单码索引</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（2）多码索引"><span class="toc-text">（2）多码索引</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-散列"><span class="toc-text">1.2 散列</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#编程语言类"><span class="toc-text">编程语言类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编程思维类"><span class="toc-text">编程思维类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算机网络类"><span class="toc-text">计算机网络类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统类"><span class="toc-text">操作系统类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库类"><span class="toc-text">数据库类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他类"><span class="toc-text">其他类</span></a></li></ol>
         
     </div>
 </aside>

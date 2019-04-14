@@ -209,11 +209,15 @@
 <h3 id="6-2-登陆并修改密码"><a href="#6-2-登陆并修改密码" class="headerlink" title="6.2 登陆并修改密码"></a>6.2 登陆并修改密码</h3><p>使用默认密码登录：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
 <p>修改密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;root123&apos;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;Abc9876543210.&apos;;</span><br></pre></td></tr></table></figure>
 <p><strong>注意：可能因为设置的密码安全性太低而会被警告，修改不成功！</strong></p>
 <p>授权其他机器进行连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;mypassword&apos; WITH GRANT OPTION;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;Abc9876543210.&apos; WITH GRANT OPTION;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
 <p><strong>注意：这里的mypassword是其他机器连接时的密码。</strong></p>
+<p>如果修改不成功，可能是密码的加密方式不正确</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;Abc9876543210.&apos; PASSWORD EXPIRE NEVER;</span><br><span class="line">ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH mysql_native_password BY &apos;Abc9876543210.&apos;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+<p>监听所有ip地址的连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br><span class="line">bind-address=0.0.0.0</span><br></pre></td></tr></table></figure>
 <h2 id="7、防火墙开放3306端口"><a href="#7、防火墙开放3306端口" class="headerlink" title="7、防火墙开放3306端口"></a>7、防火墙开放3306端口</h2><p>1、进入防火墙配置文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
 <p>2、添加防火墙规则</p>
@@ -234,15 +238,15 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/story-index/" class="pre-post btn btn-default" title="【故事】文章封面故事">
+        <a href="/tcp&udp/" class="pre-post btn btn-default" title="【原理】TCP和UDP协议的一些理解">
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">【故事】文章封面故事</span>
+            <span class="hidden-xs">【原理】TCP和UDP协议的一些理解</span>
         </a>
     
     
-        <a href="/tcp&udp/" class="next-post btn btn-default" title="【原理】TCP和UDP协议的一些理解">
+        <a href="/pointer&ref/" class="next-post btn btn-default" title="【原理】指针和引用">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">【原理】TCP和UDP协议的一些理解</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">【原理】指针和引用</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>

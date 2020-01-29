@@ -247,8 +247,34 @@
 <li><p>为使用到索引，加上f_status条件，并将该列的所有值查出来</p>
 </li>
 </ul>
-<h3 id="8-SQL语句中IN包含的值不应过多"><a href="#8-SQL语句中IN包含的值不应过多" class="headerlink" title="8.SQL语句中IN包含的值不应过多"></a><table><tr><td bgcolor="#C7C7C7">8.SQL语句中IN包含的值不应过多</td></tr></table></h3><h2 id="二、常见案例"><a href="#二、常见案例" class="headerlink" title="二、常见案例"></a>二、常见案例</h2><h3 id="1、单表查询时：联合索引中范围之后的索引将-会失效"><a href="#1、单表查询时：联合索引中范围之后的索引将-会失效" class="headerlink" title="1、单表查询时：联合索引中范围之后的索引将 会失效"></a><font color="#0000FF">1、单表查询时：联合索引中范围之后的索引将 会失效</font></h3><p><a href="https://blog.csdn.net/m0_37852399/article/details/86700063" title="单表查询的问题" target="_blank" rel="noopener">单表查询时：联合索引中范围之后的索引将 会失效</a></p>
-<hr>
+<h3 id="8-SQL语句中IN包含的值不应过多"><a href="#8-SQL语句中IN包含的值不应过多" class="headerlink" title="8.SQL语句中IN包含的值不应过多"></a><table><tr><td bgcolor="#C7C7C7">8.SQL语句中IN包含的值不应过多</td></tr></table></h3><h2 id="二、常见案例"><a href="#二、常见案例" class="headerlink" title="二、常见案例"></a>二、常见案例</h2><ol>
+<li>单表查询时：联合索引中范围之后的索引将 会失效</li>
+</ol>
+<p><a href="https://blog.csdn.net/m0_37852399/article/details/86700063" title="单表查询的问题" target="_blank" rel="noopener">单表查询时：联合索引中范围之后的索引将 会失效</a></p>
+<ol start="2">
+<li><p>对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。</p>
+</li>
+<li><p>应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：<br>select id from t where num is null<br>可以在num上设置默认值0，确保表中num列没有null值，然后这样查询：<br>select id from t where num=0    </p>
+</li>
+<li><p>应尽量避免在 where 子句中使用!=或&lt;&gt;操作符，否则将引擎放弃使用索引而进行全表扫描</p>
+</li>
+<li><p>in 和 not in 也要慎用，否则会导致全表扫描，如：<br>select id from t where num in(1,2,3)<br>对于连续的数值，能用 between 就不要用 in 了：<br>select id from t where num between 1 and 3</p>
+</li>
+<li><p>很多时候用 exists 代替 in 是一个好的选择：<br>select num from a where num in(select num from b)<br>用下面的语句替换：<br>select num from a where exists(select 1 from b where num=a.num)</p>
+</li>
+<li><p>在新建临时表时，如果一次性插入数据量很大，那么可以使用 select into 代替 create table，避免造成大量 log ，<br>以提高速度；如果数据量不大，为了缓和系统表的资源，应先create table，然后insert</p>
+</li>
+<li><p>如果使用到了临时表，在存储过程的最后务必将所有的临时表显式删除，先 truncate table ，然后 drop table ，这样可以避免系统表的较长时间锁定</p>
+</li>
+<li><p>尽量避免使用游标，因为游标的效率较差，如果游标操作的数据超过1万行，那么就应该考虑改写</p>
+</li>
+<li><p>使用基于游标的方法或临时表方法之前，应先寻找基于集的解决方案来解决问题，基于集的方法通常更有效</p>
+</li>
+<li><p>尽量避免大事务操作，提高系统并发能力</p>
+</li>
+<li><p>尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理</p>
+</li>
+</ol>
 <hr>
 <h2 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a><font color="#0000FF">三、总结</font></h2><p>暂无</p>
 
@@ -317,7 +343,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#脑图"><span class="toc-text">脑图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、常见案例"><span class="toc-text">一、常见案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-查询列发生隐式或显示的类型转换"><span class="toc-text">1. 查询列发生隐式或显示的类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-对于查询频繁的列，并且列的选择性比较高，应当建立索引"><span class="toc-text">2. 对于查询频繁的列，并且列的选择性比较高，应当建立索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-存在索引，实际执行的时候并未使用到"><span class="toc-text">3. 存在索引，实际执行的时候并未使用到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-表关联的字段需要有索引，尽量少用子查询"><span class="toc-text">4. 表关联的字段需要有索引，尽量少用子查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-索引字段进行模糊查询时，like-‘-’会导致使用不到索引"><span class="toc-text">5. 索引字段进行模糊查询时，like ‘%%’会导致使用不到索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-存在多个索引时，mysql错误的选择了索引"><span class="toc-text">6. 存在多个索引时，mysql错误的选择了索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-对于联合索引来说，要遵守最左前缀法则"><span class="toc-text">7. 对于联合索引来说，要遵守最左前缀法则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-SQL语句中IN包含的值不应过多"><span class="toc-text">8.SQL语句中IN包含的值不应过多</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、常见案例"><span class="toc-text">二、常见案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、单表查询时：联合索引中范围之后的索引将-会失效"><span class="toc-text">1、单表查询时：联合索引中范围之后的索引将 会失效</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、总结"><span class="toc-text">三、总结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#脑图"><span class="toc-text">脑图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、常见案例"><span class="toc-text">一、常见案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-查询列发生隐式或显示的类型转换"><span class="toc-text">1. 查询列发生隐式或显示的类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-对于查询频繁的列，并且列的选择性比较高，应当建立索引"><span class="toc-text">2. 对于查询频繁的列，并且列的选择性比较高，应当建立索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-存在索引，实际执行的时候并未使用到"><span class="toc-text">3. 存在索引，实际执行的时候并未使用到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-表关联的字段需要有索引，尽量少用子查询"><span class="toc-text">4. 表关联的字段需要有索引，尽量少用子查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-索引字段进行模糊查询时，like-‘-’会导致使用不到索引"><span class="toc-text">5. 索引字段进行模糊查询时，like ‘%%’会导致使用不到索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-存在多个索引时，mysql错误的选择了索引"><span class="toc-text">6. 存在多个索引时，mysql错误的选择了索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-对于联合索引来说，要遵守最左前缀法则"><span class="toc-text">7. 对于联合索引来说，要遵守最左前缀法则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-SQL语句中IN包含的值不应过多"><span class="toc-text">8.SQL语句中IN包含的值不应过多</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、常见案例"><span class="toc-text">二、常见案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、总结"><span class="toc-text">三、总结</span></a></li></ol>
         
     </div>
 </aside>

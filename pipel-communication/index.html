@@ -112,6 +112,10 @@
                             </li>
                         
                             <li role="presentation" class="text-center">
+                                <a href="https://blog.xtcgch.ink/categories/热点/"><i class="fa "></i>热点</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
                                 <a href="https://blog.xtcgch.ink/categories/人工智能/"><i class="fa "></i>人工智能</a>
                             </li>
                         
@@ -184,7 +188,7 @@
             
             
             <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>730</strong>天之前发表，文中内容可能已经过时。
+                本文于<strong>731</strong>天之前发表，文中内容可能已经过时。
             </p>
         
     </div>
@@ -205,7 +209,19 @@
 <p>它们不支持诸如lseek()等文件定位操作。</p>
 <p><strong>注意</strong>：有名管道的名字存在于文件系统中，内容存放在内存中。</p>
 <hr>
-<h2 id="管道的使用"><a href="#管道的使用" class="headerlink" title="管道的使用"></a>管道的使用</h2><h3 id="匿名管道"><a href="#匿名管道" class="headerlink" title="匿名管道"></a>匿名管道</h3><h3 id="命名管道"><a href="#命名管道" class="headerlink" title="命名管道"></a>命名管道</h3><hr>
+<h2 id="管道的使用"><a href="#管道的使用" class="headerlink" title="管道的使用"></a>管道的使用</h2><h3 id="匿名管道"><a href="#匿名管道" class="headerlink" title="匿名管道"></a>匿名管道</h3><ul>
+<li>函数<ul>
+<li>int pipe（int filedis[2]）</li>
+</ul>
+</li>
+</ul>
+<h3 id="命名管道"><a href="#命名管道" class="headerlink" title="命名管道"></a>命名管道</h3><ul>
+<li>函数<ul>
+<li>int mkfifo(const char *pathname,mode_t mode)</li>
+</ul>
+</li>
+</ul>
+<hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
     </div>
     
@@ -221,15 +237,15 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/callback-function/" class="pre-post btn btn-default" title="【原理】回调函数">
+        <a href="/makefile/" class="pre-post btn btn-default" title="【原理】makefile语法">
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">【原理】回调函数</span>
+            <span class="hidden-xs">【原理】makefile语法</span>
         </a>
     
     
-        <a href="/sort-alogrithm/" class="next-post btn btn-default" title="【原理】常见排序算法">
+        <a href="/memory-allocate/" class="next-post btn btn-default" title="【原理】内存分配、管理和算法">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">【原理】常见排序算法</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">【原理】内存分配、管理和算法</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>

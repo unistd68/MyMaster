@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>Linux下的一些小知识 | 我的博客 - blog</title>
+<title>Linux结构思维导图 | 我的博客 - blog</title>
 
 
     <link rel="alternate" href="/atom.xml" title="我的博客 - blog" type="application/atom+xml">
@@ -136,9 +136,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Linux下的一些小知识">
+        <h1 id="Linux结构思维导图">
             
-	            Linux下的一些小知识
+	            Linux结构思维导图
             
         </h1>
         <div class="post-meta">
@@ -146,8 +146,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="https://blog.xtcgch.ink/categories/原理">
-            原理
+        <a href="https://blog.xtcgch.ink/categories/知识导图">
+            知识导图
         </a>
     </span>
     
@@ -158,14 +158,6 @@
         <span class="tags-meta">
             
                 
-                    <a href="https://blog.xtcgch.ink/tags/Linux" title="Linux">
-                        Linux
-                    </a>
-                
-                    <a href="https://blog.xtcgch.ink/tags/centos" title="centos">
-                        centos
-                    </a>
-                
             
         </span>
     </span>
@@ -175,7 +167,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/03/19</span>
+            <span class="date-meta">2020/11/30</span>
         </span>
         
     
@@ -183,75 +175,64 @@
 
             
             
-            <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>621</strong>天之前发表，文中内容可能已经过时。
-            </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <p><strong>摘要：</strong>专治各种水土不服</p>
+        <p><strong>摘要：</strong>这是linux知识结构的大纲收录。</p>
 <a id="more"></a>
 <hr>
-<h2 id="linu系统介绍"><a href="#linu系统介绍" class="headerlink" title="linu系统介绍"></a><table><tr><td bgcolor="#C7C7C7">linu系统介绍</td></tr></table></h2><p>1、内核</p>
-<p><img src="linux系统内核.jpg" alt="linux系统内核"></p>
-<p>2、Linux文件结构</p>
-<p><img src="Linux文件结构.jpg" alt="Linux文件结构"></p>
-<ul>
-<li><p><strong>/bin</strong>：bin 是 Binaries (二进制文件) 的缩写, 这个目录存放着最经常使用的命令。</p>
-</li>
-<li><p><strong>/boot：</strong>这里存放的是启动 Linux 时使用的一些核心文件，包括一些连接文件以及镜像文件。</p>
-</li>
-<li><p><strong>/dev ：</strong>dev 是 Device(设备) 的缩写, 该目录下存放的是 Linux 的外部设备，在 Linux 中访问设备的方式和访问文件的方式是相同的。</p>
-</li>
-<li><p><strong>/etc：</strong>etc 是 Etcetera(等等) 的缩写,这个目录用来存放所有的系统管理所需要的配置文件和子目录。</p>
-</li>
-<li><p><strong>/home：</strong>用户的主目录，在 Linux 中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的，如上图中的 alice、bob 和 eve。</p>
-</li>
-<li><p><strong>/lib：</strong>lib 是 Library(库) 的缩写这个目录里存放着系统最基本的动态连接共享库，其作用类似于 Windows 里的 DLL 文件。几乎所有的应用程序都需要用到这些共享库。</p>
-</li>
-<li><p><strong>/lost+found：</strong>这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</p>
-</li>
-<li><p><strong>/media：</strong>linux 系统会自动识别一些设备，例如U盘、光驱等等，当识别后，Linux 会把识别的设备挂载到这个目录下。</p>
-</li>
-<li><p><strong>/mnt：</strong>系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在 /mnt/ 上，然后进入该目录就可以查看光驱里的内容了。</p>
-</li>
-<li><p><strong>/opt：</strong>opt 是 optional(可选) 的缩写，这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</p>
-</li>
-<li><p><strong>/proc：</strong>proc 是 Processes(进程) 的缩写，/proc 是一种伪文件系统（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，使别人无法ping你的机器：</p>
-</li>
-<li><p><strong>/root：</strong>该目录为系统管理员，也称作超级权限者的用户主目录。</p>
-</li>
-<li><p><strong>/sbin：</strong>s 就是 Super User 的意思，是 Superuser Binaries (超级用户的二进制文件) 的缩写，这里存放的是系统管理员使用的系统管理程序。</p>
-</li>
-<li><p><strong>/selinux：</strong> 这个目录是 Redhat/CentOS 所特有的目录，Selinux 是一个安全机制，类似于 windows 的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</p>
-</li>
-<li><p><strong>/srv：</strong> 该目录存放一些服务启动之后需要提取的数据。</p>
-</li>
-<li><p><strong>/sys：</strong><br>这是 Linux2.6 内核的一个很大的变化。该目录下安装了 2.6 内核中新出现的一个文件系统 sysfs 。</p>
+<p>其他模板的标题</p>
+<h2 id="知识理解"><a href="#知识理解" class="headerlink" title="知识理解"></a><table><tr><td bgcolor="#C7C7C7">知识理解</td></tr></table></h2><ul>
+<li>文件目录管理<ul>
+<li>目录系统</li>
+<li>文件系统<ul>
+<li>根目录<ul>
+<li>/bin</li>
+<li>/boot</li>
+<li>/dev</li>
+<li>/etc</li>
+<li>/home</li>
+<li>/media</li>
+<li>/opt</li>
+<li>/proc</li>
+<li>/root</li>
+<li>/sbin</li>
+<li>/srv</li>
+<li>/sys</li>
+<li>/tmp</li>
+<li>/usr</li>
+<li>/var</li>
+</ul>
 </li>
 </ul>
-<p>sysfs 文件系统集成了下面3种文件系统的信息：针对进程信息的 proc 文件系统、针对设备的 devfs 文件系统以及针对伪终端的 devpts 文件系统。</p>
-<p>该文件系统是内核设备树的一个直观反映。</p>
-<p>当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中被创建。</p>
-<ul>
-<li><p><strong>/tmp：</strong> tmp 是 temporary(临时) 的缩写这个目录是用来存放一些临时文件的。</p>
 </li>
-<li><p><strong>/usr：</strong> usr 是 unix shared resources(共享资源) 的缩写，这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于 windows 下的 program files 目录。</p>
-</li>
-<li><p><strong>/usr/bin：</strong>系统用户使用的应用程序。</p>
-</li>
-<li><p><strong>/usr/sbin：</strong>超级用户使用的比较高级的管理程序和系统守护程序。</p>
-</li>
-<li><p><strong>/usr/src：</strong>内核源代码默认的放置目录。</p>
-</li>
-<li><p><strong>/var：</strong>var 是 variable(变量) 的缩写，这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p>
-</li>
-<li><p><strong>/run：</strong>是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。如果你的系统上有 /var/run 目录，应该让它指向 run。</p>
-</li>
+<li>文件查找命令</li>
+<li>文件内容查看</li>
+<li></li>
 </ul>
-<h2 id="文件编码问题"><a href="#文件编码问题" class="headerlink" title="文件编码问题"></a><table><tr><td bgcolor="#C7C7C7">文件编码问题</td></tr></table></h2><p>在windows系统中生成的文件，在Linux系统中会出现各种格式方面的问题，比如cpp文件的编译错误</p>
-<p>查看文件编码格式：set fileencoding<br>设置文件编码格式：set fileencoding = utf8</p>
+</li>
+<li>设备管理</li>
+<li>系统管理</li>
+<li>用户和组管理</li>
+<li>进程和作业管理</li>
+<li>网络管理</li>
+<li>编程</li>
+<li>SHELL 管理</li>
+<li>文档编辑器</li>
+</ul>
+<h2 id="书籍阅读"><a href="#书籍阅读" class="headerlink" title="书籍阅读"></a><table><tr><td bgcolor="#C7C7C7">书籍阅读</td></tr></table></h2><ul>
+<li><a href="file:///E:/Document/books/linux结构类/鸟哥的Linux私房菜/鸟哥Linux服务器基础篇.pdf" title="鸟哥Linux服务器基础篇" target="_blank" rel="noopener">鸟哥Linux服务器基础篇</a></li>
+<li><p><a href="file:///E:/Document/books/linux结构类/鸟哥的Linux私房菜/鸟哥Linux服务器架设篇.pdf" title="鸟哥Linux服务器架设篇" target="_blank" rel="noopener">鸟哥Linux服务器架设篇</a></p>
+</li>
+<li><p><a href="file:///E:/Document/books/数据结构类/数据结构与算法分析.pdf" title="数据结构与算法分析" target="_blank" rel="noopener">数据结构与算法分析</a></p>
+</li>
+<li><p><a href="file:///E:/Document/books/数据库类/数据库系统概念.pdf" title="数据库系统概念" target="_blank" rel="noopener">数据库系统概念</a></p>
+</li>
+<li><p><a href="file:///E:/Document/books/linux/鸟哥的Linux私房菜/鸟哥Linux服务器架设篇.pdf" title="鸟哥Linux服务器架设篇" target="_blank" rel="noopener">鸟哥Linux服务器架设篇</a></p>
+</li>
+<li><a href="file:///E:/Document/books/linux/鸟哥的Linux私房菜/鸟哥Linux服务器架设篇.pdf" title="鸟哥Linux服务器架设篇" target="_blank" rel="noopener">鸟哥Linux服务器架设篇</a></li>
+<li><a href="file:///E:/Document/books/linux/鸟哥的Linux私房菜/鸟哥Linux服务器架设篇.pdf" title="鸟哥Linux服务器架设篇" target="_blank" rel="noopener">鸟哥Linux服务器架设篇</a></li>
+</ul>
 
     </div>
     
@@ -267,15 +248,15 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/使用hexo搭建github博客/" class="pre-post btn btn-default" title="使用hexo搭建github博客">
+        <a href="/技术相关经典书籍/" class="pre-post btn btn-default" title="技术相关经典书籍">
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">使用hexo搭建github博客</span>
+            <span class="hidden-xs">技术相关经典书籍</span>
         </a>
     
     
-        <a href="/python的使用/" class="next-post btn btn-default" title="python的使用">
+        <a href="/linux进程间通信之管道通信/" class="next-post btn btn-default" title="【原理】linux进程间通信之管道通信">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">python的使用</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">【原理】linux进程间通信之管道通信</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -318,7 +299,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#linu系统介绍"><span class="toc-text">linu系统介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件编码问题"><span class="toc-text">文件编码问题</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识理解"><span class="toc-text">知识理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#书籍阅读"><span class="toc-text">书籍阅读</span></a></li></ol>
         
     </div>
 </aside>

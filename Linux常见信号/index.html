@@ -344,7 +344,132 @@
 <ul>
 <li>POSIX.1中列出的信号</li>
 </ul>
-<p>信号 | 值 | 处理动作 | 发出信号的原因<br>：—|：–：|：–|：—<br>SIGHUP|1|A|终端挂起或者控制进程终止<br>SIGINT|2|A|键盘中断（如break键被按下）<br>SIGQUIT|3|C|键盘的退出键被按下<br>SIGILL|4|C|非法指令<br>SIGABRT|6|C|由abort(3)发出的退出指令<br>SIGFPE|8|C|浮点异常<br>SIGKILL|9|AEF|Kill信号<br>SIGSEGV|11|C|无效的内存引用<br>SIGPIPE|13|A|管道破裂:|写一个没有读端口的管道<br>SIGALRM|14|A|由alarm(2)发出的信号<br>SIGTERM|15|A|终止信号<br>SIGUSR1|30,10,16|A|用户自定义信号1<br>SIGUSR2|31,12,17|A|用户自定义信号2<br>SIGCHLD|20,17,18|B|子进程结束信号<br>SIGCONT|19,18,25|进程继续（曾被停止的进程）<br>SIGSTOP|17,19,23|DEF|终止进程<br>SIGTSTP|18,20,24|D|控制终端（tty）上按下停止键<br>SIGTTIN|21,21,26|D|后台进程企图从控制终端读<br>SIGTTOU|22,22,27|D|后台进程企图从控制终端写</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">信号</th>
+<th style="text-align:center">值</th>
+<th style="text-align:left">处理动作</th>
+<th style="text-align:left">发出信号的原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SIGHUP</td>
+<td style="text-align:center">1</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">终端挂起或者控制进程终止</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGINT</td>
+<td style="text-align:center">2</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">键盘中断（如break键被按下）</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGQUIT</td>
+<td style="text-align:center">3</td>
+<td style="text-align:left">C</td>
+<td style="text-align:left">键盘的退出键被按下</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGILL</td>
+<td style="text-align:center">4</td>
+<td style="text-align:left">C</td>
+<td style="text-align:left">非法指令</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGABRT</td>
+<td style="text-align:center">6</td>
+<td style="text-align:left">C</td>
+<td style="text-align:left">由abort(3)发出的退出指令</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGFPE</td>
+<td style="text-align:center">8</td>
+<td style="text-align:left">C</td>
+<td style="text-align:left">浮点异常</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGKILL</td>
+<td style="text-align:center">9</td>
+<td style="text-align:left">AEF</td>
+<td style="text-align:left">Kill信号</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGSEGV</td>
+<td style="text-align:center">11</td>
+<td style="text-align:left">C</td>
+<td style="text-align:left">无效的内存引用</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGPIPE</td>
+<td style="text-align:center">13</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">管道破裂:</td>
+<td>写一个没有读端口的管道</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGALRM</td>
+<td style="text-align:center">14</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">由alarm(2)发出的信号</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGTERM</td>
+<td style="text-align:center">15</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">终止信号</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGUSR1</td>
+<td style="text-align:center">30,10,16</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">用户自定义信号1</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGUSR2</td>
+<td style="text-align:center">31,12,17</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">用户自定义信号2</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGCHLD</td>
+<td style="text-align:center">20,17,18</td>
+<td style="text-align:left">B</td>
+<td style="text-align:left">子进程结束信号</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGCONT</td>
+<td style="text-align:center">19,18,25</td>
+<td style="text-align:left">进程继续（曾被停止的进程）</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGSTOP</td>
+<td style="text-align:center">17,19,23</td>
+<td style="text-align:left">DEF</td>
+<td style="text-align:left">终止进程</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGTSTP</td>
+<td style="text-align:center">18,20,24</td>
+<td style="text-align:left">D</td>
+<td style="text-align:left">控制终端（tty）上按下停止键</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGTTIN</td>
+<td style="text-align:center">21,21,26</td>
+<td style="text-align:left">D</td>
+<td style="text-align:left">后台进程企图从控制终端读</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGTTOU</td>
+<td style="text-align:center">22,22,27</td>
+<td style="text-align:left">D</td>
+<td style="text-align:left">后台进程企图从控制终端写</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>SUSv2中列出的信号</li>
 </ul>

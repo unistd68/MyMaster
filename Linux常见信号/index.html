@@ -357,37 +357,37 @@
 <tr>
 <td style="text-align:left">SIGHUP</td>
 <td style="text-align:center">1</td>
-<td style="text-align:left">A</td>
+<td style="text-align:left">终止进程</td>
 <td style="text-align:left">终端挂起或者控制进程终止</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGINT</td>
 <td style="text-align:center">2</td>
-<td style="text-align:left">A</td>
+<td style="text-align:left">终止进程</td>
 <td style="text-align:left">键盘中断（如break键被按下）</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGQUIT</td>
 <td style="text-align:center">3</td>
-<td style="text-align:left">C</td>
+<td style="text-align:left">终止进程</td>
 <td style="text-align:left">键盘的退出键被按下</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGILL</td>
 <td style="text-align:center">4</td>
-<td style="text-align:left">C</td>
+<td style="text-align:left">终止进程</td>
 <td style="text-align:left">非法指令</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGABRT</td>
 <td style="text-align:center">6</td>
-<td style="text-align:left">C</td>
+<td style="text-align:left">终止进程</td>
 <td style="text-align:left">由abort(3)发出的退出指令</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGFPE</td>
 <td style="text-align:center">8</td>
-<td style="text-align:left">C</td>
+<td style="text-align:left">终止进程</td>
 <td style="text-align:left">浮点异常</td>
 </tr>
 <tr>
@@ -399,73 +399,73 @@
 <tr>
 <td style="text-align:left">SIGSEGV</td>
 <td style="text-align:center">11</td>
-<td style="text-align:left">C</td>
+<td style="text-align:left">终止进程</td>
 <td style="text-align:left">无效的内存引用</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGPIPE</td>
 <td style="text-align:center">13</td>
-<td style="text-align:left">A</td>
-<td style="text-align:left">管道破裂:</td>
-<td>写一个没有读端口的管道</td>
+<td style="text-align:left">终止进程</td>
+<td style="text-align:left">管道破裂:写一个没有读端口的管道</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGALRM</td>
 <td style="text-align:center">14</td>
-<td style="text-align:left">A</td>
+<td style="text-align:left">终止进程</td>
 <td style="text-align:left">由alarm(2)发出的信号</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGTERM</td>
 <td style="text-align:center">15</td>
-<td style="text-align:left">A</td>
+<td style="text-align:left">终止进程</td>
 <td style="text-align:left">终止信号</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGUSR1</td>
 <td style="text-align:center">30,10,16</td>
-<td style="text-align:left">A</td>
+<td style="text-align:left">终止进程</td>
 <td style="text-align:left">用户自定义信号1</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGUSR2</td>
 <td style="text-align:center">31,12,17</td>
-<td style="text-align:left">A</td>
+<td style="text-align:left">终止进程</td>
 <td style="text-align:left">用户自定义信号2</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGCHLD</td>
 <td style="text-align:center">20,17,18</td>
-<td style="text-align:left">B</td>
+<td style="text-align:left">忽略信号</td>
 <td style="text-align:left">子进程结束信号</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGCONT</td>
 <td style="text-align:center">19,18,25</td>
+<td style="text-align:left"></td>
 <td style="text-align:left">进程继续（曾被停止的进程）</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGSTOP</td>
 <td style="text-align:center">17,19,23</td>
-<td style="text-align:left">DEF</td>
+<td style="text-align:left">停止进程、不能被捕获、不能被忽略</td>
 <td style="text-align:left">终止进程</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGTSTP</td>
 <td style="text-align:center">18,20,24</td>
-<td style="text-align:left">D</td>
+<td style="text-align:left">终止进程</td>
 <td style="text-align:left">控制终端（tty）上按下停止键</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGTTIN</td>
 <td style="text-align:center">21,21,26</td>
-<td style="text-align:left">D</td>
+<td style="text-align:left">终止进程</td>
 <td style="text-align:left">后台进程企图从控制终端读</td>
 </tr>
 <tr>
 <td style="text-align:left">SIGTTOU</td>
 <td style="text-align:center">22,22,27</td>
-<td style="text-align:left">D</td>
+<td style="text-align:left">终止进程</td>
 <td style="text-align:left">后台进程企图从控制终端写</td>
 </tr>
 </tbody>
@@ -473,7 +473,78 @@
 <ul>
 <li>SUSv2中列出的信号</li>
 </ul>
-<p>信号 | 值 | 处理动作 | 发出信号的原因<br>：–|：–：|：–|：–<br>SIGBUS|10,7,10|C|总线错误(错误的内存访问)<br>SIGPOLL|A|Sys|V定义的Pollable事件，与SIGIO同义<br>SIGPROF|27,27,29|A|Profiling定时器到<br>SIGSYS|12,-,12|C|无效的系统调用|(SVID)<br>SIGTRAP|5|C|跟踪/断点捕获<br>SIGURG|16,23,21|B|Socket出现紧急条件(4.2|BSD)<br>SIGVTALRM|26,26,28|A|实际时间报警时钟信号(4.2|BSD)<br>SIGXCPU|24,24,30|C|超出设定的CPU时间限制(4.2|BSD)<br>SIGXFSZ|25,25,31|C|超出设定的文件大小限制(4.2|BSD)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">信号</th>
+<th style="text-align:center">值</th>
+<th style="text-align:left">处理动作</th>
+<th style="text-align:left">发出信号的原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SIGBUS</td>
+<td style="text-align:center">10,7,10</td>
+<td style="text-align:left">终止进程</td>
+<td style="text-align:left">总线错误(错误的内存访问)</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGPOLL</td>
+<td style="text-align:center">终止进程</td>
+<td style="text-align:left">Sys</td>
+<td style="text-align:left">V定义的Pollable事件，与SIGIO同义</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGPROF</td>
+<td style="text-align:center">27,27,29</td>
+<td style="text-align:left">终止进程</td>
+<td style="text-align:left">Profiling定时器到</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGSYS</td>
+<td style="text-align:center">12,-,12</td>
+<td style="text-align:left">终止进程</td>
+<td style="text-align:left">无效的系统调用</td>
+<td>(SVID)</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGTRAP</td>
+<td style="text-align:center">5</td>
+<td style="text-align:left">终止进程</td>
+<td style="text-align:left">跟踪断点捕获</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">SIGURG</td>
+<td style="text-align:center">16,23,21</td>
+<td style="text-align:left">忽略信号</td>
+<td style="text-align:left">Socket出现紧急条件(4.2</td>
+<td>BSD)</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGVTALRM</td>
+<td style="text-align:center">26,26,28</td>
+<td style="text-align:left">终止进程</td>
+<td style="text-align:left">实际时间报警时钟信号(4.2</td>
+<td>BSD)</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGXCPU</td>
+<td style="text-align:center">24,24,30</td>
+<td style="text-align:left">终止进程</td>
+<td style="text-align:left">超出设定的CPU时间限制(4.2</td>
+<td>BSD)</td>
+</tr>
+<tr>
+<td style="text-align:left">SIGXFSZ</td>
+<td style="text-align:center">25,25,31</td>
+<td style="text-align:left">终止进程</td>
+<td style="text-align:left">超出设定的文件大小限制(4.2</td>
+<td>BSD)</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><table><tr><td bgcolor="#C7C7C7">总结</td></tr></table></h2><p>信号是Linux系统编程的一个重要概念，要尽快掌握。</p>
 

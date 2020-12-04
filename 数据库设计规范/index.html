@@ -236,7 +236,7 @@
 <li>禁止使用set与enum类型字段</li>
 <li>财务相关字段使用decimal类型或者整型，不要使用float或者double</li>
 </ul>
-<h2 id="建索引"><a href="#建索引" class="headerlink" title="建索引"></a><font color="#0000FF">建索引</font></h2><ul>
+<h2 id="建索引"><a href="#建索引" class="headerlink" title="建索引"></a><font color="#0000FF">建索引</font></h2><ol>
 <li>ID,编号，时间等字段请在建表时加索引，这些一般查询会用到</li>
 <li>能建复合索引就建复合索引，例如user_id与user_name都要那索引，那建两个索引(user_id, user_name)与user_name, 而不是user_id与user_name分别一个索引</li>
 <li>复合索引包含的字段数不要超过3个, 选择性高的字段放在前面，即是重复值越少排越前面。例如user_name与status, 复合索引应该为(user_name, status)而不是(status, user_name)</li>
@@ -244,7 +244,7 @@
 <li>索引不要过多与冗余。每个索引都是一棵B+树， 每个节点都要存储索引字段与主健值， 别的不说， 会占用不少硬盘空间， 特别是我们公司数据量这么大的情况下。 索引（user_name）与索引(user_name, user_id)就重复了， 需要去掉索引(user_name)</li>
 <li>在多表join的SQL里，驱动表的连接列上要有索引。例如t1 inner join t2 on t1.user_id=t2.user_id， 那么t1.user_id与t2.user_id都要有索引。</li>
 <li>索引命名， 唯一索引以uidx_为开头如uidx_userid， 普通索引以idx_为开头idx_username</li>
-</ul>
+</ol>
 <h2 id="SQL规范"><a href="#SQL规范" class="headerlink" title="SQL规范"></a><font color="#0000FF">SQL规范</font></h2><ul>
 <li><p>连接管理</p>
 <ol>
@@ -276,7 +276,7 @@
 </ul>
 <hr>
 <h1 id="非关系型数据库"><a href="#非关系型数据库" class="headerlink" title="非关系型数据库"></a><table><tr><td bgcolor="#C7C7C7">非关系型数据库</td></tr></table></h1><hr>
-<h1 id="应用和反馈"><a href="#应用和反馈" class="headerlink" title="应用和反馈"></a><table><tr><td bgcolor="#C7C7C7">应用和反馈</td></tr></table></h1>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a><table><tr><td bgcolor="#C7C7C7">总结</td></tr></table></h1>
     </div>
     
     <div class="post-footer">
@@ -290,6 +290,11 @@
 </article>
 
 <div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/MYSQL学习/" class="pre-post btn btn-default" title="MYSQL学习">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">MYSQL学习</span>
+        </a>
     
     
         <a href="/GCC和G++的编译/" class="next-post btn btn-default" title="GCC和G++的编译">
@@ -337,7 +342,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#脑图"><span class="toc-text">脑图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关系型数据库"><span class="toc-text">关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原则"><span class="toc-text">原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命名规范"><span class="toc-text">命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建表设计规范"><span class="toc-text">建表设计规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字段类型选择"><span class="toc-text">字段类型选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建索引"><span class="toc-text">建索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL规范"><span class="toc-text">SQL规范</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#非关系型数据库"><span class="toc-text">非关系型数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#应用和反馈"><span class="toc-text">应用和反馈</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#脑图"><span class="toc-text">脑图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关系型数据库"><span class="toc-text">关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原则"><span class="toc-text">原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命名规范"><span class="toc-text">命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建表设计规范"><span class="toc-text">建表设计规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字段类型选择"><span class="toc-text">字段类型选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建索引"><span class="toc-text">建索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL规范"><span class="toc-text">SQL规范</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#非关系型数据库"><span class="toc-text">非关系型数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
         
     </div>
 </aside>
